@@ -1,7 +1,7 @@
 {
   "name": "nagrady.by",
   "version": "0.1.0",
-  "homepage": "https://ushchent.github.io/tester",
+  "homepage": "https://ushchent.github.io/tester/",
   "private": true,
   "dependencies": {
     "gh-pages": "^2.0.1",
