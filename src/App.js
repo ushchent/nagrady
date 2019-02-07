@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Info from "./Info";
 import "./App.css";
 import Header from "./Header";
@@ -12,7 +12,7 @@ const App = () => {
 	return (
     <div>
         {/*   <YMInitializer accounts={[26845122]} /> */}
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
 		<Header />
 		<Switch>
             <Route exact path="/" />
