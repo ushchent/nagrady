@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Info from "./Info";
+import "./App.css";
+import Header from "./Header";
+import Nagrady from "./Nagrady";
+import Data from "./Data";
+//import { YMInitializer } from 'react-yandex-metrika';
+import Footer from "./Footer";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+	return (
+    <div>
+        {/*   <YMInitializer accounts={[26845122]} /> */}
+    <Router basename={process.env.PUBLIC_URL}>
+		<Header />
+		<Switch>
+            <Route exact path="/" />
+            <Route path="/nagrady" component={ Nagrady } />
+            <Route path="/data" component={ Data } />
+            <Route path="/info" component={ Info } />
+            <Route render={() => <h1 className="page_title">Старонка ня знойдзена</h1>} />
+		</Switch>
+		<Footer />
+    </Router>
+    </div>
+)};
 
 export default App;
