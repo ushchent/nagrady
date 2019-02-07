@@ -9,10 +9,11 @@ import Data from "./Data";
 import Footer from "./Footer";
 
 const App = () => {
+	console.log("process.env.PUBLIC_URL: ", process.env.PUBLIC_URL);
 	return (
     <div>
         {/*   <YMInitializer accounts={[26845122]} /> */}
-    <Router basename={process.env.PUBLIC_URL + "/"}>
+    <Router basename={process.env.PUBLIC_URL + "/tester/"}>
 		<Header />
 		<Switch>
             <Route exact path='/' />
