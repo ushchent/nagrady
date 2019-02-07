@@ -12,12 +12,12 @@ const App = () => {
 	return (
     <div>
         {/*   <YMInitializer accounts={[26845122]} /> */}
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={process.env.PUBLIC_URL + "/"}>
 		<Header />
 		<Switch>
-            <Route exact path={process.env.PUBLIC_URL + '/'} />
-            <Route path={process.env.PUBLIC_URL + "/nagrady"} component={ Nagrady } />
-            <Route path={process.env.PUBLIC_URL + "/data"} component={ Data } />
+            <Route exact path='/' />
+            <Route path="/nagrady" component={ Nagrady } />
+            <Route path="/data" component={ Data } />
             <Route path="/info" component={ Info } />
             <Route render={() => <h1 className="page_title">Старонка ня знойдзена</h1>} />
 		</Switch>
