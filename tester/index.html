@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<meta charset="utf-8">
+<script src="d3.v4.min.js"></script>
+<body>
+	<div id="root"></div>
+<script>
+
+	function draw(data) {
+		const { by_sex, by_year} = data;
+
+		const column_area = d3.select("#root")
+				.append("svg")
+				.attr("width", 700)
+				.attr("height", 300);
+		const dataMax = d3.max(Object.values(by_year));
+		const yScale = d3.scaleLinear()
+			 .domain([0, dataMax])
+			 .range([280, 0])
+		var xScale = d3.scaleBand()
+						.domain(Object.entries(by_year).map(d => d[0]))
+						.range([0, 650])
+						//.paddingInner(0.05);
+
+
+		var xAxis = d3.axisBottom()
+					.scale(xScale);
+		var yAxis = d3.axisLeft()
+					.scale(yScale)
+					.ticks(3);
+
+		column_area.append("g")
+			.attr("class", "bars")
+			.attr("width", 700)
+			.attr("height", 300);
+
+		column_area.append("g")
+			.attr("class", "xAxis")
+			.attr("transform", "translate(40, 280)")
+
+		column_area.append("g")
+			.attr("class", "yAxis")
+			.attr("transform", "translate(40, 0)")
+
+		column_area.select(".xAxis").call(xAxis);
+		column_area.select(".yAxis").call(yAxis);
+
+console.log("scaleBand is ", xScale.bandwidth())
+
+		column_area.select(".bars")
+			.selectAll("rect")
+			.data(Object.entries(by_year))
+			.enter()
+			.append("rect")
+			.attr("x", (d) => (xScale(d[0]) + (30) + xScale.bandwidth() / 2))
+			.attr("y", (d) => yScale(d[1]))
+			.attr("width", 20)
+			.attr("height", d => 280 - yScale(d[1]))
+	}
+	
+	d3.json("https://nagrady-29748.firebaseio.com/total_stats/456.json", function(data) {
+		console.log("drawing...")
+		draw(data);
+})
+
+</script>
+</body>
+</html>

@@ -1,9 +1,15 @@
 {
   "name": "nagrady.by",
   "version": "0.1.0",
-  "homepage": "https://ushchent.github.io/tester/",
+  "homepage": "https://nagrady.by",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "d3": "^5.9.2",
+    "d3-axis": "^1.0.12",
+    "d3-request": "^1.0.6",
+    "d3-scale": "^3.0.0",
+    "d3-selection": "^1.4.0",
     "gh-pages": "^2.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -11,7 +17,7 @@
     "react-yandex-metrika": "^2.4.2"
   },
   "scripts": {
-	"deploy": "npm run build&&gh-pages -d build",
+    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -27,6 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "firebase-server": "^1.0.2",
     "react-router-dom": "^4.4.0-beta.6"
   }
 }

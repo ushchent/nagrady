@@ -1,0 +1,13 @@
+https://stackoverflow.com/questions/38381241/d3-v4-react-es6-how-to-create-axis-programmatically
+
+If you are using React then you are pretty much giving control of how the DOM works to React because of it's internal workings. React will render your components inside a virtual DOM tree and then figure out the difference between the DOM tree in the page were you inserted the root component and the former. It will apply the difference between the two trees so that the tree in the page will look like the virtual one.
+
+Mixing d3 and React requires a bit of a trick. All the elements you use d3 for (nodes or attributes) should not be owned by React. Otherwise weird stuff happens. Let's say your transform attribute for the g.axis node is set by d3, that implies that you don't render it in React. You let your d3 logic have exclusive ownership of it.
+
+Now comes the next step. If you want to use other tools to describe DOM nodes then you got to put that logic inside componentWillMount and componentDidUpdate. Basically you only render the g element inside the render() method of React and then inside those two React lifecycle handles you can change the attributes of the g element and what's inside.
+
+I will point you towards this post that goes a bit more in detail about the hows, but I would also like to give my two cents. From my perspective and experience with these two it is best to only use d3 for it's helper functions (generic math functions). Let the rendering logic (DOM composition) be done purely in React even though there's code duplication that arises. It is way easier to maintain code that is consistent and that doesn't have two different approaches to rendering mixed together.
+
+TL;DR; Either give attributes or nodes ownership to either React or d3 for them to work together; or my recommendation, make your own axis component in React that outputs the same DOM elements as the d3 one (or different if you desire other functionality or style) and don't use d3 for rendering.
+
+Hope I helped.
