@@ -11,6 +11,10 @@
 
 # production
 /build
+.firebaserc
+/bkp
+.firebase
+/tester
 
 # misc
 .DS_Store
