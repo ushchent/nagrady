@@ -13,8 +13,8 @@
 /build
 .firebaserc
 /bkp
-.firebase
-/tester
+.firebase/
+/tester/
 
 # misc
 .DS_Store
